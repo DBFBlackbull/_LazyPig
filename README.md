@@ -1,4 +1,4 @@
-#_LazyPig Wow 1.12.1 
+# _LazyPig Wow 1.12.1 
 
 This mod is mostly for lazy people.
 Some of the addon's functions may not work if you're using not en/us localized client.
@@ -53,3 +53,7 @@ Addons with similar functionality you don't need anymore
 - Hold Alt Key to Pickup/Complete quests(Quest Auto-PickUp/Auto-Complete)
 
 *[Big thanks to mrmr for improving addon's GUI](https://github.com/rsheep)*
+
+## Fork changes
+
+* No longer auto processes gossip for The Mystical Fire (Chronoboon) on WoW-hc.com hardcore server.
