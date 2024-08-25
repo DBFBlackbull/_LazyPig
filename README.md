@@ -1,4 +1,4 @@
-#_LazyPig Wow 1.12.1 
+# _LazyPig Wow 1.12.1 
 
 This mod is mostly for lazy people.
 Some of the addon's functions may not work if you're using not en/us localized client.
