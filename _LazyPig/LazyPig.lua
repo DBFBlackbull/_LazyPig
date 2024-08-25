@@ -600,7 +600,7 @@ function LazyPig_OnEvent(event)
 		local gossipbreak = nil
 		local processgossip = IsShiftKeyDown() or LPCONFIG.GOSSIP
 		
-		dsc,GossipOptions[1],_,GossipOptions[2],_,GossipOptions[3],_,GossipOptions[4],_,GossipOptions[5] = GetGossipOptions()	
+		dsc,GossipOptions[1],_,GossipOptions[2],_,GossipOptions[3],_,GossipOptions[4],_,GossipOptions[5] = GetGossipOptions()
 
 		ActiveQuest = LazyPig_ProcessQuests(GetGossipActiveQuests())
 		AvailableQuest = LazyPig_ProcessQuests(GetGossipAvailableQuests())
@@ -628,9 +628,12 @@ function LazyPig_OnEvent(event)
 				end	
 			elseif gossipnr then
 				gossipbreak = true
-			elseif (GossipOptions[i] == "trainer" or GossipOptions[i] == "vendor" and processgossip or GossipOptions[i] == "battlemaster" and (LPCONFIG.QBG or processgossip) or GossipOptions[i] == "gossip" and (IsAltKeyDown() or IsShiftKeyDown() or string.find(dsc, "Teleport me to the Molten Core") and processgossip)) then
+			elseif (GossipOptions[i] == "trainer"
+					or GossipOptions[i] == "vendor" and processgossip
+					or GossipOptions[i] == "battlemaster" and (LPCONFIG.QBG or processgossip)
+					or GossipOptions[i] == "gossip" and (IsAltKeyDown() or IsShiftKeyDown() or string.find(dsc, "Teleport me to the Molten Core") and processgossip)) then
 				gossipnr = i
-			elseif GossipOptions[i] == "taxi" and processgossip then	
+			elseif GossipOptions[i] == "taxi" and processgossip then
 				gossipnr = i
 				LazyPig_Dismount();	
 			end
@@ -640,7 +643,7 @@ function LazyPig_OnEvent(event)
 			SelectGossipOption(gossipnr);
 		else
 			LazyPig_ReplyQuest(event);
-		end	
+		end
 
 	elseif(event == "QUEST_PROGRESS" or event == "QUEST_COMPLETE") then
 		LazyPig_ReplyQuest(event);
@@ -651,7 +654,7 @@ function LazyPig_OnEvent(event)
 		
 	elseif(event == "UPDATE_BATTLEFIELD_STATUS" and not afk_active or event == "CHAT_MSG_BG_SYSTEM_NEUTRAL" and arg1 and string.find(arg1, "wins!")) then
 		bgstatus = GetTime()
-			
+
 	elseif(event == "BATTLEFIELDS_SHOW") then
 		LazyPig_QueueBG();
 
