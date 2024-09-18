@@ -603,9 +603,8 @@ function LazyPig_OnEvent(event)
 		dsc,GossipOptions[1],_,GossipOptions[2],_,GossipOptions[3],_,GossipOptions[4],_,GossipOptions[5] = GetGossipOptions()
 
 		-- Ignore The Mystical Fire on wow-hc.com server
-		if GossipOptions[1] == "banker"
-				and GossipOptions[2] == "gossip"
-				and GossipOptions[3] == "battlemaster" then
+		local unitName = UnitName("npc")
+		if unitName == "Mystical Fire" then
 			return
 		end
 
