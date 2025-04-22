@@ -56,4 +56,5 @@ Addons with similar functionality you don't need anymore
 
 ## Fork changes
 
+* Moved all files to root level for faster development
 * No longer auto processes gossip for The Mystical Fire (Chronoboon) on WoW-hc.com hardcore server.
