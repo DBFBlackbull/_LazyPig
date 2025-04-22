@@ -28,7 +28,7 @@ local CheckBoxTables = {
 		[3] = { "LazyPigCheckbox52", "Queue Battleground", "Join the queue as soon as the BattleMaster is right-clicked" },
 		[4] = { "LazyPigCheckbox53", "Auto Release", "Auto Accept Release in BG" },
 		[5] = { "LazyPigCheckbox54", "Leader Queue Announce" },
-		[6] = { "LazyPigCheckbox55", "Leader Queue Announce" }
+		[6] = { "LazyPigCheckbox55", "Block Battleground Quest Sharing", "Really? No more 'Stable' spam?" }
 	},
 	
 	["Smart Salvation Remover"] = {
@@ -65,8 +65,6 @@ local CheckBoxTables = {
 		[9] = { "LazyPigCheckbox98", "Gossip Auto Processing", "Skip Gossip-Windows-Choises from Innkeepers and FlyMasters" },
 		[10] = { "LazyPigCheckbox99", "Character Auto-Save", "Use the .save command when....when?" },
 		[11] = { "LazyPigCheckbox100", "Auto Dismount", "Auto-Dismount when it's required by another action" },
-		--[12] = { "LazyPigCheckbox101", "Chat Spam Filter", "One minute ban for identical messages" },
-		--[12] = { "LazyPigCheckbox102", "Block Battleground Quest Sharing", "Really? No more 'Stable' spam?" }
 	},
 	
 		["Chat Filter"] = {
