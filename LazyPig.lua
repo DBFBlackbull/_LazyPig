@@ -160,7 +160,7 @@ local LazyPigMenuStrings = {
 		[98]= "Gossip Auto Processing",
 		[99]= "Character Auto-Save",
 		[100]= "Auto Dismount",
-		[101]= "Chat Spam Filter"
+		[101]= "Auto confirm BoP when solo"
 }
 
 function LazyPig_OnLoad()
@@ -413,6 +413,7 @@ function LazyPig_OnEvent(event)
 		this:RegisterEvent("QUEST_PROGRESS")
 		this:RegisterEvent("QUEST_COMPLETE")
 		this:RegisterEvent("START_LOOT_ROLL")
+		this:RegisterEvent("LOOT_BIND_CONFIRM")
 		this:RegisterEvent("DUEL_REQUESTED")
 		this:RegisterEvent("MERCHANT_SHOW")
 		this:RegisterEvent("MERCHANT_CLOSED")
@@ -683,6 +684,8 @@ function LazyPig_OnEvent(event)
 			StaticPopup_Hide("RESURRECT");
 		end
 		TargetLastTarget();
+	elseif(event == "LOOT_BIND_CONFIRM" and LPCONFIG.LOOT_AUTO_CONFIRM and GetNumPartyMembers() == 0 and GetNumRaidMembers() == 0) then
+		LazyPig_AutoConfirmLoot()
 	end
 	--DEFAULT_CHAT_FRAME:AddMessage(event);	
 end
@@ -817,6 +820,17 @@ function LazyPig_AutoSummon()
 		elseif expireTime == 0 then
 			player_summon_confirm = false
 			player_summon_message = false
+		end
+	end
+end
+
+function LazyPig_AutoConfirmLoot()
+	for i=1,STATICPOPUP_NUMDIALOGS do
+		local frame = getglobal("StaticPopup"..i)
+		if frame:IsShown() and frame.which == "LOOT_BIND" then
+			local bindConfirmButton = getglobal("StaticPopup"..i.."Button1")
+			ScheduleButtonClick(bindConfirmButton, 0.05)
+			return
 		end
 	end
 end
@@ -1713,9 +1727,9 @@ function LazyPig_GetOption(num)
 	LazyPigMenuObjects[num] = this
 
 	if num == 00 and LPCONFIG.GREEN == 1
-	or num == 01 and LPCONFIG.GREEN == 2 
-	or num == 02 and LPCONFIG.GREEN == 0 
-	or num == 10 and LPCONFIG.ZG == 1		
+	or num == 01 and LPCONFIG.GREEN == 2
+	or num == 02 and LPCONFIG.GREEN == 0
+	or num == 10 and LPCONFIG.ZG == 1
 	or num == 11 and LPCONFIG.ZG == 2
 	or num == 12 and LPCONFIG.ZG == 0
 	or num == 20 and LPCONFIG.WORLDDUNGEON
@@ -1750,12 +1764,12 @@ function LazyPig_GetOption(num)
 	or num == 93 and LPCONFIG.SHIFTSPLIT
 	or num == 94 and LPCONFIG.CAM
 	or num == 95 and LPCONFIG.SPECIALKEY
-	or num == 96 and LPCONFIG.DUEL		
+	or num == 96 and LPCONFIG.DUEL
 	or num == 97 and LPCONFIG.REZ
 	or num == 98 and LPCONFIG.GOSSIP
 	or num == 99 and LPCONFIG.NOSAVE ~= GetRealmName()
 	or num == 100 and LPCONFIG.DISMOUNT
-	or num == 101 and LPCONFIG.SPAM
+	or num == 101 and LPCONFIG.LOOT_AUTO_CONFIRM
 	
 	or nil then
 		this:SetChecked(true);
@@ -1886,7 +1900,7 @@ function LazyPig_SetOption(num)
 		if not checked then LPCONFIG.RBG = nil end
 	elseif num == 54 then 
 		LPCONFIG.AQUE = true
-		if not checked then LPCONFIG.AQUE = nil end		
+		if not checked then LPCONFIG.AQUE = nil end
 	elseif num == 55 then
 		LPCONFIG.SBG  = true
 		if not checked then LPCONFIG.SBG  = nil end	
@@ -1909,10 +1923,10 @@ function LazyPig_SetOption(num)
 		if not checked then LPCONFIG.SPAM_UNCOMMON = nil end
 	elseif num == 72 then 
 		LPCONFIG.SPAM_RARE	 = true
-		if not checked then LPCONFIG.SPAM_RARE	 = nil end	
+		if not checked then LPCONFIG.SPAM_RARE	 = nil end
 	elseif num == 73 then 
 		LPCONFIG.SPAM_LOOT	 = true
-		if not checked then LPCONFIG.SPAM_LOOT	 = nil end		
+		if not checked then LPCONFIG.SPAM_LOOT	 = nil end
 		
 	elseif num == 90 then
 		LPCONFIG.SUMM = true

@@ -65,9 +65,10 @@ local CheckBoxTables = {
 		[9] = { "LazyPigCheckbox98", "Gossip Auto Processing", "Skip Gossip-Windows-Choises from Innkeepers and FlyMasters" },
 		[10] = { "LazyPigCheckbox99", "Character Auto-Save", "Use the .save command when....when?" },
 		[11] = { "LazyPigCheckbox100", "Auto Dismount", "Auto-Dismount when it's required by another action" },
+		[12] = { "LazyPigCheckbox101", "Auto confirm BoP when solo", "Auto confirm Bind on Pickup loot when not in a group"}
 	},
 	
-		["Chat Filter"] = {
+	["Chat Filter"] = {
 		[0] = "LazyPigCheckboxChatFilter",
 		[1] = { "LazyPigCheckbox70", "Players' Spam" },
 		[2] = { "LazyPigCheckbox71", "Uncommon Roll" },
@@ -138,7 +139,7 @@ function LazyPig_CreateOptionsFrame()
 	frame:SetScale(.81)
 
 	frame:SetWidth(480)
-	frame:SetHeight(428)
+	frame:SetHeight(444)
 	
 	frame:SetPoint("TOPLEFT", nil, "TOPLEFT", 250, -50)
 	frame:SetBackdrop( {
