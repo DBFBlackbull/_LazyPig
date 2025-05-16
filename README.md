@@ -58,3 +58,4 @@ Addons with similar functionality you don't need anymore
 
 * Moved all files to root level for faster development
 * No longer auto processes gossip for The Mystical Fire (Chronoboon) on WoW-hc.com hardcore server.
+* Auto confirm Bind on Pickup loot when not in a party or raid.
