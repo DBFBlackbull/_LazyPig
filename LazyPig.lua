@@ -1966,8 +1966,8 @@ function LazyPig_SetOption(num)
 		LPCONFIG.DISMOUNT = true
 		if not checked then LPCONFIG.DISMOUNT = nil end	
 	elseif num == 101 then
-		LPCONFIG.SPAM  = true
-		if not checked then LPCONFIG.SPAM  = nil end			
+		LPCONFIG.LOOT_AUTO_CONFIRM = true
+		if not checked then LPCONFIG.LOOT_AUTO_CONFIRM  = nil end
 		
 	else
 		--DEFAULT_CHAT_FRAME:AddMessage("DEBUG: No num assigned - "..num)
